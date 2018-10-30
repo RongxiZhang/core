@@ -384,27 +384,6 @@ class AppManager implements IAppManager {
 	}
 
 	/**
-	 * Returns a list of apps incompatible with the given version
-	 *
-	 * @param array $version ownCloud version as array of version components
-	 *
-	 * @return array list of app info from incompatible apps
-	 *
-	 * @internal
-	 */
-	public function getIncompatibleApps($version) {
-		$apps = $this->getInstalledApps();
-		$incompatibleApps = [];
-		foreach ($apps as $appId) {
-			$info = $this->getAppInfo($appId);
-			if (!\OC_App::isAppCompatible($version, $info)) {
-				$incompatibleApps[] = $info;
-			}
-		}
-		return $incompatibleApps;
-	}
-
-	/**
 	 * @inheritdoc
 	 */
 	public function isShipped($appId) {
